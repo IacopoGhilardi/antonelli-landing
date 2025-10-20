@@ -43,7 +43,7 @@
 </template>
 
 <script setup>
-import ContactCard from "../components/ContactCard.vue";
+import ContactCard from "../components/contactCard.vue";
 
 const contatti = [
   {
