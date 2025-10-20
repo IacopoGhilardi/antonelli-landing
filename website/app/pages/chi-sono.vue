@@ -1,5 +1,5 @@
 <template>
-  <UContainer class="py-20">
+  <UContainer>
 
     <!-- Titolo -->
     <PageTitle title="Chi sono" subtitle="Conosci meglio il mio percorso professionale e il mio approccio alla fisioterapia."></PageTitle>

@@ -1,5 +1,5 @@
 <template>
-  <UContainer class="py-16 space-y-12">
+  <UContainer class="pb-12 space-y-12">
 
     <!-- Titolo -->
     <PageTitle title="I miei contatti"

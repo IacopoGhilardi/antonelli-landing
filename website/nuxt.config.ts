@@ -8,7 +8,4 @@ export default defineNuxtConfig({
     ui: {
         theme: {}
     },
-    app: {
-        pageTransition: { name: 'page', mode: 'out-in' },
-    },
 })

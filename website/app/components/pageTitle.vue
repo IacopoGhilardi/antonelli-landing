@@ -1,5 +1,5 @@
 <template>
-  <div class="text-center space-y-3 mb-16">
+  <div class="text-center space-y-3 py-16">
     <h1 class="text-5xl font-bold text-gray-900 dark:text-white">
       {{ title }}
     </h1>
