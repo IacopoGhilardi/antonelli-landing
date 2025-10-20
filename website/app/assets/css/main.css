@@ -1,0 +1,57 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme {
+    --font-sans: 'Public Sans', sans-serif;
+    --breakpoint-3xl: 1920px;
+
+    /* 🎨 Colori principali */
+    --color-primary-50: #EAF7FF;
+    --color-primary-100: #D6EDFF;
+    --color-primary-200: #ADD9FF;
+    --color-primary-300: #84C5FF;
+    --color-primary-400: #5BB1FF;
+    --color-primary: #2499FF;
+    --color-primary-600: #1E82E0;
+    --color-primary-700: #1766B4;
+    --color-primary-800: #114988;
+    --color-primary-900: #0A2D5C;
+    --color-primary-950: #05172E;
+
+    /* Verde fisioterapia – fresco e rilassante */
+    --color-secondary-50: #E6FBF5;
+    --color-secondary-100: #C8F7EB;
+    --color-secondary-200: #91EFD7;
+    --color-secondary-300: #5EE7C4;
+    --color-secondary-400: #2EDFB0;
+    --color-secondary: #04D486;
+    --color-secondary-600: #03AD70;
+    --color-secondary-700: #028B5C;
+    --color-secondary-800: #017347;
+    --color-secondary-900: #015A33;
+    --color-secondary-950: #002E19;
+
+    /* Feedback */
+    --color-success: #38A169;
+    --color-warning: #D69E2E;
+    --color-error: #E53E3E;
+
+    /* Neutri e sfondi */
+    --color-neutral-50: #F7FAFC;
+    --color-neutral-100: #EDF2F7;
+    --color-neutral-200: #E2E8F0;
+    --color-neutral-300: #CBD5E0;
+    --color-neutral-400: #A0AEC0;
+    --color-neutral-500: #718096;
+    --color-neutral-600: #4A5568;
+    --color-neutral-700: #2D3748;
+    --color-neutral-800: #1A202C;
+    --color-neutral-900: #171923;
+
+    /* Sfondi principali */
+    --color-background-primary: var(--color-neutral-50);
+    --color-background-secondary: #F2E2D3;
+
+    /* Accento (testi, titoli) */
+    --color-accent: #000000;
+}
