@@ -5,7 +5,7 @@
     <PageTitle title="Chi sono" subtitle="Conosci meglio il mio percorso professionale e il mio approccio alla fisioterapia."></PageTitle>
 
     <!-- Sezione principale -->
-    <div class="grid md:grid-cols-2 gap-12 items-center">
+    <div class="grid md:grid-cols-2 gap-12 items-center my-24 px-4">
       <!-- Testo -->
       <div class="space-y-4 text-gray-700 dark:text-gray-300">
         <h2 class="text-2xl font-semibold text-gray-900 dark:text-white">

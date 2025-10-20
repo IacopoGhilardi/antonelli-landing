@@ -31,9 +31,10 @@ const servizi = [
   <!-- HERO -->
   <UPageHero
       title="Gianluca Antonelli"
-      description="Fisioterapista a Pisa — Trattamenti personalizzati e un fiko della madonna."
+      description="Fisioterapista a Pisa — Trattamenti personalizzati per ritrovare equilibrio e benessere."
       :links="links"
       orientation="horizontal"
+      class="bg-gradient-to-r from-primary/10 via-white to-transparent"
   >
     <img
         src="#"
@@ -57,7 +58,7 @@ const servizi = [
       <UCard
           v-for="(s, i) in servizi"
           :key="i"
-          class="p-6 rounded-2xl text-center hover:shadow-lg transition-all"
+          class="p-6 rounded-2xl text-center hover:shadow-lg transition-all bg-blue-50"
       >
         <UIcon :name="s.icon" class="w-10 h-10 text-primary mx-auto mb-4" />
         <h3 class="font-semibold text-lg text-gray-900 dark:text-white mb-2">{{ s.title }}</h3>
