@@ -8,6 +8,7 @@
       </NuxtLayout>
       <Footer />
     </UMain>
+    <MoleculesBackToTopButton />
   </UApp>
 </template>
 

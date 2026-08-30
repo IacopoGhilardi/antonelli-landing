@@ -1,47 +1,43 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui'
-import {computed} from "#imports";
 
-const route = useRoute()
-
-const items = computed<NavigationMenuItem[]>(() => [
-  {
-    label: 'Home',
-    to: '/',
-    active: route.path === '/' // solo true se siamo davvero sulla home
-  },
-  {
-    label: 'Chi sono',
-    to: '/chi-sono',
-    active: route.path.startsWith('/chi-sono')
-  },
-  {
-    label: 'Contatti',
-    to: '/contatti',
-    active: route.path.startsWith('/contatti')
-  },
-  {
-    label: 'Trattamenti',
-    to: '/trattamenti',
-    active: route.path.startsWith('/trattamenti')
-  }
-])
+const items: NavigationMenuItem[] = [
+  { label: 'Home', to: '#home' },
+  { label: 'Servizi', to: '#servizi' },
+  { label: 'Chi sono', to: '#chi-sono' },
+  { label: 'Contatti', to: '#contatti' }
+]
 </script>
 
 <template>
-  <UHeader>
+  <UHeader mode="slideover" :ui="{ left: 'flex-1', center: 'flex-1 justify-center', right: 'flex-1' }">
     <template #title>
-      Logo
+      <AtomsLogo />
     </template>
 
+    <UNavigationMenu :items="items" />
+
     <template #right>
-      <UNavigationMenu :items="items" class="hidden lg:block"/>
       <UColorModeButton />
+      <UButton
+        label="Prenota ora"
+        to="#contatti"
+        color="tertiary"
+        variant="solid"
+        class="rounded-full font-semibold hidden sm:inline-flex"
+      />
     </template>
 
     <template #body>
       <UNavigationMenu :items="items" orientation="vertical" class="-mx-2.5" />
+      <UButton
+        label="Prenota ora"
+        to="#contatti"
+        color="tertiary"
+        variant="solid"
+        block
+        class="rounded-full font-semibold mt-4"
+      />
     </template>
-
   </UHeader>
 </template>

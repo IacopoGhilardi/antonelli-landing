@@ -1,76 +1,87 @@
 <script setup lang="ts">
 const year = new Date().getFullYear()
+
+const links = [
+  { label: 'Home', to: '#home' },
+  { label: 'Servizi', to: '#servizi' },
+  { label: 'Chi sono', to: '#chi-sono' },
+  { label: 'Contatti', to: '#contatti' },
+  { label: 'Privacy Policy', to: '/privacy-policy' }
+]
 </script>
 
 <template>
-  <UFooter class="bg-gray-900 text-gray-100 border-t border-gray-800 py-10">
-    <!-- Slot TOP -->
+  <UFooter id="contatti" class="bg-primary-900 text-white border-t border-primary-800 py-12 scroll-mt-(--ui-header-height)">
     <template #top>
-      <div class="max-w-screen-lg mx-auto w-full flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-        <!-- Info personali -->
-        <div class="mb-6 md:mb-0">
-          <h3 class="text-lg font-semibold text-white">
+      <UContainer class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- Brand -->
+        <div class="space-y-3">
+          <h3 class="text-lg font-bold text-white">
             Gianluca Antonelli — Fisioterapista
           </h3>
-          <div class="mt-3 space-y-1 text-gray-300">
-            <p>
-              📞
-              <a href="tel:+393491585839" class="hover:underline">
-                +39 349 1585839
-              </a>
+          <p class="text-primary-100 text-sm leading-relaxed max-w-xs">
+            Terapie personalizzate, manuali e strumentali per il recupero del movimento e del benessere, a studio e a domicilio.
+          </p>
+          <div class="flex gap-1 pt-1">
+            <UButton
+              icon="i-simple-icons-linkedin"
+              color="neutral"
+              variant="ghost"
+              class="text-primary-100 hover:text-white"
+              to="https://www.linkedin.com/"
+              target="_blank"
+              aria-label="LinkedIn"
+            />
+            <UButton
+              icon="i-simple-icons-instagram"
+              color="neutral"
+              variant="ghost"
+              class="text-primary-100 hover:text-white"
+              to="https://www.instagram.com/"
+              target="_blank"
+              aria-label="Instagram"
+            />
+          </div>
+        </div>
+
+        <!-- Navigazione -->
+        <div>
+          <AtomsSectionEyebrow color="secondary" class="mb-3">Navigazione</AtomsSectionEyebrow>
+          <nav class="flex flex-col gap-2">
+            <ULink
+              v-for="link in links"
+              :key="link.to"
+              :to="link.to"
+              class="text-primary-100 hover:text-white transition text-sm w-fit"
+            >
+              {{ link.label }}
+            </ULink>
+          </nav>
+        </div>
+
+        <!-- Contatti -->
+        <div>
+          <AtomsSectionEyebrow color="secondary" class="mb-3">Contatti</AtomsSectionEyebrow>
+          <div class="space-y-2 text-sm text-primary-100">
+            <p class="flex items-center gap-2">
+              <UIcon name="i-heroicons-phone" class="w-4 h-4 shrink-0" />
+              <a href="tel:+393491585839" class="hover:underline hover:text-white">+39 349 1585839</a>
             </p>
-            <p>
-              ✉️
-              <a
-                  href="mailto:gianluca.antonelli@fisioterapia.it"
-                  class="hover:underline"
-              >
+            <p class="flex items-center gap-2">
+              <UIcon name="i-heroicons-envelope" class="w-4 h-4 shrink-0" />
+              <a href="mailto:gianluca.antonelli@fisioterapia.it" class="hover:underline hover:text-white">
                 gianluca.antonelli@fisioterapia.it
               </a>
             </p>
           </div>
         </div>
-
-        <!-- Navigazione -->
-        <div class="mb-4 md:mb-0 space-y-1 text-gray-300">
-          <nav class="flex flex-col md:flex-row gap-3 md:gap-6 justify-center">
-            <ULink to="/" class="text-gray-300 hover:text-white transition">Home</ULink>
-            <ULink to="/chi-sono" class="text-gray-300 hover:text-white transition">Chi sono</ULink>
-            <ULink to="/trattamenti" class="text-gray-300 hover:text-white transition">Trattamenti</ULink>
-            <ULink to="/contatti" class="text-gray-300 hover:text-white transition">Contatti</ULink>
-          </nav>
-        </div>
-
-        <!-- Social -->
-        <div class="flex gap-3">
-          <UButton
-              icon="i-simple-icons-linkedin"
-              color="neutral"
-              variant="ghost"
-              class="text-gray-300 hover:text-white"
-              to="https://www.linkedin.com/"
-              target="_blank"
-              aria-label="LinkedIn"
-          />
-          <UButton
-              icon="i-simple-icons-instagram"
-              color="neutral"
-              variant="ghost"
-              class="text-gray-300 hover:text-white"
-              to="https://www.instagram.com/"
-              target="_blank"
-              aria-label="Instagram"
-          />
-        </div>
-      </div>
+      </UContainer>
     </template>
 
-    <!-- Slot BOTTOM -->
     <template #bottom>
-      <div class="text-center text-sm text-gray-400 mt-8 border-t border-gray-800 pt-4">
+      <div class="text-center text-sm text-primary-200 border-t border-primary-800 pt-4">
         © {{ year }} Gianluca Antonelli — Fisioterapista · Tutti i diritti riservati
       </div>
     </template>
-
   </UFooter>
 </template>

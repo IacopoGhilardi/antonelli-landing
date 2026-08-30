@@ -1,6 +1,16 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
 @theme {
     --font-sans: 'Public Sans', sans-serif;
     --breakpoint-3xl: 1920px;
@@ -11,7 +21,8 @@
     --color-primary-200: #ADD9FF;
     --color-primary-300: #84C5FF;
     --color-primary-400: #5BB1FF;
-    --color-primary: #2499FF;
+    --color-primary-500: #2499FF;
+    --color-primary: var(--color-primary-500);
     --color-primary-600: #1E82E0;
     --color-primary-700: #1766B4;
     --color-primary-800: #114988;
@@ -24,12 +35,27 @@
     --color-secondary-200: #91EFD7;
     --color-secondary-300: #5EE7C4;
     --color-secondary-400: #2EDFB0;
-    --color-secondary: #04D486;
+    --color-secondary-500: #04D486;
+    --color-secondary: var(--color-secondary-500);
     --color-secondary-600: #03AD70;
     --color-secondary-700: #028B5C;
     --color-secondary-800: #017347;
     --color-secondary-900: #015A33;
     --color-secondary-950: #002E19;
+
+    /* Corallo – call to action (es. "Prenota ora") */
+    --color-tertiary-50: #FFF2EE;
+    --color-tertiary-100: #FFE1D8;
+    --color-tertiary-200: #FFC3B1;
+    --color-tertiary-300: #FFA48A;
+    --color-tertiary-400: #FF8663;
+    --color-tertiary-500: #FF6B45;
+    --color-tertiary: var(--color-tertiary-500);
+    --color-tertiary-600: #F04E24;
+    --color-tertiary-700: #C93B16;
+    --color-tertiary-800: #9E2E11;
+    --color-tertiary-900: #74220C;
+    --color-tertiary-950: #451405;
 
     /* Feedback */
     --color-success: #38A169;
@@ -47,6 +73,7 @@
     --color-neutral-700: #2D3748;
     --color-neutral-800: #1A202C;
     --color-neutral-900: #171923;
+    --color-neutral-950: #0B0D12;
 
     /* Sfondi principali */
     --color-background-primary: var(--color-neutral-50);

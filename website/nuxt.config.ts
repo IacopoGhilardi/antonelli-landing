@@ -6,6 +6,8 @@ export default defineNuxtConfig({
     css: ['~/assets/css/main.css'],
     modules: ['@nuxt/ui'],
     ui: {
-        theme: {}
+        theme: {
+            colors: ['primary', 'secondary', 'tertiary', 'success', 'info', 'warning', 'error']
+        }
     },
 })
