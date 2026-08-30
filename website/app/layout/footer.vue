@@ -5,8 +5,7 @@ const links = [
   { label: 'Home', to: '#home' },
   { label: 'Servizi', to: '#servizi' },
   { label: 'Chi sono', to: '#chi-sono' },
-  { label: 'Contatti', to: '#contatti' },
-  { label: 'Privacy Policy', to: '/privacy-policy' }
+  { label: 'Contatti', to: '#contatti' }
 ]
 </script>
 
