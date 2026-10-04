@@ -53,9 +53,7 @@ const { target: reviewsTarget, visible: reviewsVisible } = useScrollReveal()
           Gianluca Antonelli, Fisioterapista
         </h2>
         <p class="text-muted">
-          Fisioterapista laureato all'Università di Pisa, mi occupo di riabilitazione ortopedica,
-          sportiva e fisioterapia domiciliare. Aiuto le persone a recuperare il movimento e
-          ritrovare benessere fisico con un approccio empatico e personalizzato.
+          Fisioterapista OMPT specializzato nella valutazione e nel trattamento dei disordini muscolo-scheletrici. Dopo la laurea a Firenze, ho conseguito il Master internazionale a Savona (titolo riconosciuto IFOMPT) per garantire un approccio basato sulle più recenti evidenze scientifiche. Mi occupo di riabilitazione ortopedica, gestione del dolore acuto e cronico, problematiche articolari e muscolari e recupero post-chirurgico o sportivo, strutturando percorsi su misura per ritrovare il miglior benessere funzionale.
         </p>
         <ul class="space-y-2">
           <AtomsCheckListItem v-for="item in bullets" :key="item" color="secondary">
