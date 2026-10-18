@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import heroImage from '~/assets/images/hero-fisioterapia.jpg'
 import { useScrollReveal } from '~/composables/useScrollReveal'
+import HighlightText from '../atoms/HighlightText.vue';
 
 const { target, visible } = useScrollReveal()
 </script>
@@ -12,7 +13,10 @@ const { target, visible } = useScrollReveal()
   >
     <img
       :src="heroImage"
-      alt="Gianluca Antonelli durante una seduta di fisioterapia"
+      alt="Gianluca Antonelli, fisioterapista OMPT a Pisa, durante una seduta di terapia manuale"
+      width="1920"
+      height="1080"
+      fetchpriority="high"
       class="absolute inset-0 h-full w-full object-cover"
     >
     <div class="absolute inset-0 bg-gradient-to-r from-primary-950/90 via-primary-950/70 to-primary-950/30" />
@@ -25,16 +29,17 @@ const { target, visible } = useScrollReveal()
       >
         <h1 class="text-4xl font-extrabold leading-tight sm:text-5xl">
           Riabilita il tuo movimento,
-          <AtomsHighlightText color="primary">ritrova</AtomsHighlightText>
-          <AtomsHighlightText color="primary">il benessere.</AtomsHighlightText>
+          <HighlightText color="primary">ritrova</HighlightText>
+          <HighlightText color="primary">il benessere.</HighlightText>
         </h1>
 
         <p class="text-lg text-white/90">
-          Terapie personalizzate, manuali e strumentali per il dolore e il recupero da infortuni.
+          Valutazione e trattamento dei disordini muscolo-scheletrici a Pisa e in Toscana: terapia
+          manuale ed esercizio terapeutico per il dolore e il recupero dagli infortuni, in studio e a domicilio.
         </p>
 
         <UButton
-          label="Scopri i nostri servizi"
+          label="Scopri i miei servizi"
           to="#servizi"
           color="tertiary"
           size="xl"

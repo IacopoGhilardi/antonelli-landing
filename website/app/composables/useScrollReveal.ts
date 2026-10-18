@@ -10,9 +10,14 @@ export function useScrollReveal(options?: { threshold?: number; rootMargin?: str
 
   onMounted(() => {
     const el = target.value instanceof HTMLElement ? target.value : target.value?.$el
-    if (!(el instanceof HTMLElement)) return
 
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    // Senza elemento, senza IntersectionObserver o con le animazioni ridotte
+    // mostriamo subito il contenuto: non deve mai restare invisibile.
+    if (
+      !(el instanceof HTMLElement)
+      || typeof IntersectionObserver === 'undefined'
+      || window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
       visible.value = true
       return
     }

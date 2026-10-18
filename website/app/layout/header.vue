@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui'
 
+// Ancore alla home: la navigazione resta sulla pagina principale,
+// le pagine dedicate sono approfondimenti raggiungibili dalle sezioni.
 const items: NavigationMenuItem[] = [
-  { label: 'Home', to: '#home' },
-  { label: 'Servizi', to: '#servizi' },
-  { label: 'Chi sono', to: '#chi-sono' },
-  { label: 'Contatti', to: '#contatti' }
+  { label: 'Home', to: '/#home' },
+  { label: 'Servizi', to: '/#servizi' },
+  { label: 'Chi sono', to: '/#chi-sono' },
+  { label: 'Contatti', to: '/#contatti' }
 ]
 </script>
 
@@ -15,13 +17,12 @@ const items: NavigationMenuItem[] = [
       <AtomsLogo />
     </template>
 
-    <UNavigationMenu :items="items" />
+    <UNavigationMenu :items="items" variant="link" />
 
     <template #right>
-      <UColorModeButton />
       <UButton
-        label="Prenota ora"
-        to="#contatti"
+        label="Come posso aiutarti?"
+        to="/#contatti"
         color="tertiary"
         variant="solid"
         class="rounded-full font-semibold hidden sm:inline-flex"
@@ -29,10 +30,10 @@ const items: NavigationMenuItem[] = [
     </template>
 
     <template #body>
-      <UNavigationMenu :items="items" orientation="vertical" class="-mx-2.5" />
+      <UNavigationMenu :items="items" variant="link" orientation="vertical" class="-mx-2.5" />
       <UButton
-        label="Prenota ora"
-        to="#contatti"
+        label="Come posso aiutarti?"
+        to="/#contatti"
         color="tertiary"
         variant="solid"
         block

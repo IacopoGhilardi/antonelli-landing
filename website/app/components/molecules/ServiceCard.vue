@@ -27,7 +27,7 @@ const { target, visible } = useScrollReveal()
         :icon="icon"
         :color="color"
         size="lg"
-        class="ring-4 ring-white shadow-lg dark:ring-neutral-900"
+        class="ring-4 ring-white shadow-lg"
       />
     </div>
 

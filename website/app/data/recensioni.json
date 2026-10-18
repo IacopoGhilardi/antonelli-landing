@@ -1,0 +1,25 @@
+{
+  "profiloUrl": "https://www.google.it/maps/place/ABC+Salute/@43.6776111,10.4353248,17z/data=!3m1!4b1!4m6!3m5!1s0x427415c748f963c3:0x3a798899c0a5399a!8m2!3d43.6776072!4d10.4378997",
+  "mediaVoto": 5,
+  "totaleRecensioni": 3,
+  "recensioni": [
+    {
+      "nome": "Enrico",
+      "data": "11 mesi ago",
+      "rating": 5,
+      "testo": "Sono stato seguito dal fisioterapista Gianluca Antonelli per trattare uno stiramento intracoscia: professionale, gentile ed empatico, è sempre rimasto a disposizione anche per domande fuori dagli orari delle sedute. Il trattamento è stato proattivo e senza l’uso esclusivo di macchinari (ex tecar), abbiamo di volta in volta adattato gli esercizi utili permettendomi un rientro rapido all’attività sportiva. Assolutamente consigliato!"
+    },
+    {
+      "nome": "Mario",
+      "data": "11 mesi fa",
+      "rating": 5,
+      "testo": "Sono stato da Gianluca Antonelli per una visita seguito di una frattura al piede che mi dava problemi da oltre 5 mesi e devo dire che ho avuto una piacevolissima sorpresa. Ho trovato competenza, professionalità e cordialità ma cosa più importante ho avvertito un netto miglioramento già dalla prima seduta . Il centro é nuovissimo , attrezzato e all'interno sono stato accolto dagli altri professionisti con cortesia e calore. Tornerò certamente. 5 stelle meritatissime."
+    },
+    {
+      "nome": "Federico",
+      "data": "un anno fa",
+      "rating": 5,
+      "testo": "Mi sono rivolto per una seduta di fisioterapia. Consiglio vivamente Gianluca Antonelli!"
+    }
+  ]
+}
