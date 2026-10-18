@@ -1,7 +1,24 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
+// Dominio di produzione. In locale e sui deploy di prova viene sovrascritto
+// dalla variabile d'ambiente NUXT_PUBLIC_SITE_URL.
+const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://www.gianlucaantonelli.it'
+
 export default defineNuxtConfig({
     compatibilityDate: '2025-07-15',
+
+    runtimeConfig: {
+        public: {
+            siteUrl,
+            /**
+             * Il sito si lascia indicizzare solo dal dominio definitivo.
+             * Finché gira su Netlify di prova o in locale resta fuori da
+             * Google: evita che l'anteprima venga indicizzata al posto del
+             * sito vero e che i canonical puntino a un dominio inesistente.
+             */
+            indicizzabile: !/netlify\.app|localhost|127\.0\.0\.1|^$/.test(siteUrl)
+        }
+    },
     devtools: { enabled: true },
     css: ['~/assets/css/main.css'],
     modules: ['@nuxt/ui'],
@@ -24,8 +41,6 @@ export default defineNuxtConfig({
                 { name: 'geo.position', content: '43.6776072;10.4378997' },
                 { name: 'ICBM', content: '43.6776072, 10.4378997' },
                 { name: 'author', content: 'Gianluca Antonelli' },
-                { name: 'robots', content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' },
-                { name: 'googlebot', content: 'index, follow, max-image-preview:large, max-snippet:-1' },
                 { name: 'theme-color', content: '#2499FF' },
                 // Evita che Safari trasformi numeri e indirizzi in link automatici
                 { name: 'format-detection', content: 'telephone=no' }
@@ -42,7 +57,7 @@ export default defineNuxtConfig({
     nitro: {
         prerender: {
             crawlLinks: true,
-            routes: ['/', '/servizi', '/chi-sono', '/contatti']
+            routes: ['/', '/servizi', '/chi-sono', '/contatti', '/robots.txt', '/sitemap.xml']
         },
         // Pre-comprime gli asset statici: meno byte, pagina più veloce
         compressPublicAssets: { gzip: true, brotli: true }

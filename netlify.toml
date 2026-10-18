@@ -1,0 +1,30 @@
+# Configurazione del deploy su Netlify.
+# ATTENZIONE: questo file ha la precedenza sulle impostazioni del pannello web.
+
+[build]
+  # Il progetto Nuxt sta in una sottocartella del repository
+  base = "website"
+  command = "pnpm generate"
+  # Output di `nuxt generate`, relativo a `base`
+  publish = ".output/public"
+
+[build.environment]
+  # Node 26 rompe il dev server di Nuxt e non è ancora supportato:
+  # la 24 è l'ultima LTS su cui il progetto è verificato.
+  NODE_VERSION = "24"
+  NPM_FLAGS = "--version"   # impedisce a Netlify di usare npm al posto di pnpm
+
+# Finché NUXT_PUBLIC_SITE_URL non punta al dominio definitivo, il sito
+# genera robots.txt con Disallow e meta robots noindex: vedi nuxt.config.ts
+
+[[headers]]
+  for = "/_nuxt/*"
+  [headers.values]
+    cache-control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"

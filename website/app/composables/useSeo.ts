@@ -1,5 +1,5 @@
-import { useHead, useRoute, useSeoMeta } from '#imports'
-import { indirizzoCompleto, professionista, siteUrl, studio, zoneServite } from '~/utils/site'
+import { useHead, useRoute, useRuntimeConfig, useSeoMeta } from '#imports'
+import { indirizzoCompleto, professionista, studio, zoneServite } from '~/utils/site'
 import { servizi } from '~/utils/servizi'
 import { recensioniGoogle } from '~/utils/recensioni'
 
@@ -16,6 +16,7 @@ type SeoOptions = {
  */
 export function usePageSeo({ title, description, image = '/og-image.jpg' }: SeoOptions) {
   const route = useRoute()
+  const { siteUrl, indicizzabile } = useRuntimeConfig().public
   const url = `${siteUrl}${route.path === '/' ? '' : route.path}`
 
   useHead({
@@ -25,6 +26,10 @@ export function usePageSeo({ title, description, image = '/og-image.jpg' }: SeoO
   useSeoMeta({
     title,
     description,
+    // Sui deploy di prova il sito non va indicizzato
+    robots: indicizzabile
+      ? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+      : 'noindex, nofollow',
     ogTitle: title,
     ogDescription: description,
     ogType: 'website',
@@ -68,6 +73,7 @@ export function usePageSeo({ title, description, image = '/og-image.jpg' }: SeoO
  * il riquadro con indirizzo, orari, telefono e stelle nei risultati locali.
  */
 export function useLocalBusinessSchema() {
+  const { siteUrl } = useRuntimeConfig().public
   // Le stelle in SERP si dichiarano solo con recensioni vere: dichiararle
   // senza averle è una violazione delle linee guida di Google.
   const { recensioniReali, mediaVoto, totaleRecensioni, recensioni } = recensioniGoogle
@@ -216,6 +222,8 @@ export function useLocalBusinessSchema() {
 
 /** Breadcrumb: Google li mostra al posto dell'URL nei risultati */
 export function useBreadcrumbSchema(items: { name: string, path: string }[]) {
+  const { siteUrl } = useRuntimeConfig().public
+
   useHead({
     script: [{
       type: 'application/ld+json',

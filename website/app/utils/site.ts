@@ -1,9 +1,6 @@
-/**
- * ⚠️ DOMINIO: sostituire con quello definitivo prima di andare online.
- * Viene usato per URL canonici, Open Graph, sitemap e dati strutturati:
- * se è sbagliato, Google indicizza indirizzi inesistenti.
- */
-export const siteUrl = 'https://www.gianlucaantonelli.it'
+// Il dominio NON sta più qui: è in nuxt.config.ts, sovrascrivibile con la
+// variabile d'ambiente NUXT_PUBLIC_SITE_URL e leggibile via
+// useRuntimeConfig().public.siteUrl
 
 export const professionista = {
   nome: 'Gianluca Antonelli',
