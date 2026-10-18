@@ -1,13 +1,40 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui'
+import { computed } from '#imports'
+import { useRoute } from '#app'
 import { whatsappUrl } from '~/utils/site'
+import { useActiveSection } from '~/composables/useActiveSection'
 
-const items: NavigationMenuItem[] = [
-  { label: 'Home', to: '/#home' },
-  { label: 'Servizi', to: '/#servizi' },
-  { label: 'Chi sono', to: '/#chi-sono' },
-  { label: 'Contatti', to: '/contatti' }
-]
+const route = useRoute()
+
+// Senza questo, Nuxt UI segna come attive tutte le voci con ancora
+// (stesso percorso della home) e Contatti non si illumina mai.
+const sezioneAttiva = useActiveSection(['home', 'servizi', 'chi-sono'])
+
+// Una voce è attiva se stai leggendo la sua sezione in home
+// oppure se ti trovi sulla pagina dedicata corrispondente.
+const items = computed<NavigationMenuItem[]>(() => [
+  {
+    label: 'Home',
+    to: '/#home',
+    active: sezioneAttiva.value === 'home'
+  },
+  {
+    label: 'Servizi',
+    to: '/#servizi',
+    active: sezioneAttiva.value === 'servizi' || route.path === '/servizi'
+  },
+  {
+    label: 'Chi sono',
+    to: '/#chi-sono',
+    active: sezioneAttiva.value === 'chi-sono' || route.path === '/chi-sono'
+  },
+  {
+    label: 'Contatti',
+    to: '/contatti',
+    active: route.path === '/contatti'
+  }
+])
 </script>
 
 <template>

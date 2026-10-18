@@ -23,9 +23,7 @@ const approfondimenti = [
       <UContainer class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
         <!-- Brand -->
         <div class="space-y-3">
-          <h3 class="text-lg font-bold text-white">
-            Gianluca Antonelli — Fisioterapista OMPT
-          </h3>
+          <AtomsLogo invertito class="mb-1" />
           <p class="text-primary-100 text-sm leading-relaxed max-w-xs">
             Valutazione e trattamento dei disordini muscolo-scheletrici: terapia manuale ed esercizio terapeutico,
             in studio e a domicilio.

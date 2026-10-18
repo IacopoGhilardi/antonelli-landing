@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { professionista, studio, indirizzoCompleto, zoneServite, whatsappUrl } from '~/utils/site'
+import { professionista, studio, indirizzoCompleto, whatsappUrl } from '~/utils/site'
 import { usePageSeo, useBreadcrumbSchema } from '~/composables/useSeo'
 
 usePageSeo({
@@ -133,24 +133,6 @@ useBreadcrumbSchema([
             allowfullscreen
           />
         </div>
-      </section>
-
-      <!-- Zone servite: contenuto utile per la ricerca locale -->
-      <section class="mt-16 rounded-2xl bg-primary-50 p-8 sm:p-10">
-        <h2 class="text-xl font-bold text-highlighted">Zone servite</h2>
-        <p class="mt-3 max-w-3xl text-sm text-muted">
-          Ricevo in studio a Ospedaletto e seguo pazienti provenienti da Pisa e da tutta la provincia.
-          I trattamenti a domicilio sono disponibili a Pisa e nei comuni limitrofi.
-        </p>
-        <ul class="mt-5 flex flex-wrap gap-2">
-          <li
-            v-for="zona in zoneServite"
-            :key="zona"
-            class="rounded-full bg-white px-3 py-1 text-sm text-highlighted ring-1 ring-primary-200"
-          >
-            {{ zona }}
-          </li>
-        </ul>
       </section>
     </UContainer>
   </div>
