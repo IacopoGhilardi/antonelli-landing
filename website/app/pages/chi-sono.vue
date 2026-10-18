@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import aboutImage from '~/assets/images/gianluca-antonelli.jpg'
+import { whatsappUrl } from '~/utils/site'
 
 import { usePageSeo, useBreadcrumbSchema } from '~/composables/useSeo'
 
@@ -101,8 +102,8 @@ const valori = [
         <img
           :src="aboutImage"
           alt="Gianluca Antonelli, fisioterapista OMPT a Pisa"
-          width="800"
-          height="1000"
+          width="1000"
+          height="666"
           loading="lazy"
           class="mx-auto aspect-4/5 w-full max-w-sm rounded-2xl object-cover shadow-lg"
         >
@@ -177,13 +178,14 @@ const valori = [
 
       <div class="mt-16 text-center">
         <UButton
-          to="/contatti"
-          color="tertiary"
+          :to="whatsappUrl"
+          target="_blank"
+          rel="noopener noreferrer"
           size="lg"
-          class="rounded-full font-semibold"
-          trailing-icon="i-heroicons-arrow-right"
+          class="rounded-full bg-[#25D366] font-semibold text-white hover:bg-[#1EBE5A]"
         >
-          Come posso aiutarti?
+          <AtomsWhatsAppIcon class="h-5 w-5" />
+          Scrivimi su WhatsApp
         </UButton>
       </div>
     </UContainer>

@@ -11,8 +11,14 @@ export const professionista = {
   telefono: '+39 333 109 0138',
   telefonoHref: 'tel:+393331090138',
   telefonoE164: '+393331090138',
-  email: 'gianlucaantonelli@hotmail.it'
+  email: 'gianlucaantonelli@hotmail.it',
+  /** Numero in formato internazionale senza simboli, come richiede wa.me */
+  whatsapp: '393331090138',
+  whatsappTesto: 'Ciao Gianluca, vorrei informazioni per una seduta di fisioterapia.'
 } as const
+
+/** Link a WhatsApp con messaggio precompilato */
+export const whatsappUrl = `https://wa.me/${professionista.whatsapp}?text=${encodeURIComponent(professionista.whatsappTesto)}`
 
 /** Studio presso cui riceve */
 export const studio = {

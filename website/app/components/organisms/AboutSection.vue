@@ -21,7 +21,11 @@ const { target, visible } = useScrollReveal()
     >
       <img
         :src="aboutImage"
-        alt="Gianluca Antonelli, fisioterapista"
+        alt="Gianluca Antonelli, fisioterapista OMPT a Pisa"
+        width="1000"
+        height="666"
+        loading="lazy"
+        decoding="async"
         class="mx-auto aspect-4/5 w-full max-w-sm rounded-2xl object-cover shadow-lg"
       >
 

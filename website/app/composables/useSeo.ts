@@ -1,6 +1,7 @@
 import { useHead, useRoute, useSeoMeta } from '#imports'
 import { indirizzoCompleto, professionista, siteUrl, studio, zoneServite } from '~/utils/site'
 import { servizi } from '~/utils/servizi'
+import { recensioniGoogle } from '~/utils/recensioni'
 
 type SeoOptions = {
   title: string
@@ -34,7 +35,31 @@ export function usePageSeo({ title, description, image = '/og-image.jpg' }: SeoO
     twitterCard: 'summary_large_image',
     twitterTitle: title,
     twitterDescription: description,
-    twitterImage: `${siteUrl}${image}`
+    twitterImage: `${siteUrl}${image}`,
+    twitterImageAlt: title,
+    ogImageAlt: title,
+    ogImageWidth: 1200,
+    ogImageHeight: 630,
+    ogImageType: 'image/jpeg'
+  })
+
+  // Schema della singola pagina, collegato al grafo del sito
+  useHead({
+    script: [{
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        '@id': `${url}#webpage`,
+        url,
+        name: title,
+        description,
+        inLanguage: 'it-IT',
+        isPartOf: { '@id': `${siteUrl}/#website` },
+        about: { '@id': `${siteUrl}/#studio` },
+        primaryImageOfPage: `${siteUrl}${image}`
+      })
+    }]
   })
 }
 
@@ -43,6 +68,38 @@ export function usePageSeo({ title, description, image = '/og-image.jpg' }: SeoO
  * il riquadro con indirizzo, orari, telefono e stelle nei risultati locali.
  */
 export function useLocalBusinessSchema() {
+  // Le stelle in SERP si dichiarano solo con recensioni vere: dichiararle
+  // senza averle è una violazione delle linee guida di Google.
+  const { recensioniReali, mediaVoto, totaleRecensioni, recensioni } = recensioniGoogle
+  const aggregateRating = recensioniReali && recensioni.length && totaleRecensioni > 0
+    ? {
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: mediaVoto,
+          reviewCount: totaleRecensioni,
+          bestRating: 5,
+          worstRating: 1
+        }
+      }
+    : {}
+
+  // Le singole recensioni nel grafo: Google le usa per le stelle in SERP
+  const review = recensioniReali && recensioni.length
+    ? {
+        review: recensioni.map(r => ({
+          '@type': 'Review',
+          author: { '@type': 'Person', name: r.nome },
+          reviewRating: {
+            '@type': 'Rating',
+            ratingValue: r.rating,
+            bestRating: 5,
+            worstRating: 1
+          },
+          reviewBody: r.testo
+        }))
+      }
+    : {}
+
   const schema = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -75,6 +132,28 @@ export function useLocalBusinessSchema() {
         openingHoursSpecification: studio.orariSchema,
         areaServed: zoneServite.map(nome => ({ '@type': 'City', name: nome })),
         medicalSpecialty: 'PhysicalTherapy',
+        isAcceptingNewPatients: true,
+        availableLanguage: { '@type': 'Language', name: 'Italiano', alternateName: 'it' },
+        paymentAccepted: 'Contanti, Bancomat, Carta di credito',
+        founder: { '@id': `${siteUrl}/#gianluca` },
+        employee: { '@id': `${siteUrl}/#gianluca` },
+        knowsLanguage: 'it-IT',
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name: 'Servizi di fisioterapia',
+          itemListElement: servizi.map(s => ({
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: s.title,
+              description: s.description,
+              url: `${siteUrl}/servizi#${s.slug}`,
+              provider: { '@id': `${siteUrl}/#studio` }
+            }
+          }))
+        },
+        ...aggregateRating,
+        ...review,
         availableService: servizi.map(s => ({
           '@type': 'MedicalTherapy',
           name: s.title,

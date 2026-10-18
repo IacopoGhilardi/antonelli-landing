@@ -24,10 +24,16 @@ export default defineNuxtConfig({
                 { name: 'geo.position', content: '43.6776072;10.4378997' },
                 { name: 'ICBM', content: '43.6776072, 10.4378997' },
                 { name: 'author', content: 'Gianluca Antonelli' },
-                { name: 'robots', content: 'index, follow, max-image-preview:large, max-snippet:-1' }
+                { name: 'robots', content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' },
+                { name: 'googlebot', content: 'index, follow, max-image-preview:large, max-snippet:-1' },
+                { name: 'theme-color', content: '#2499FF' },
+                // Evita che Safari trasformi numeri e indirizzi in link automatici
+                { name: 'format-detection', content: 'telephone=no' }
             ],
             link: [
-                { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+                { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+                // I font sono self-hosted da @nuxt/fonts: niente richieste a terzi
+                { rel: 'dns-prefetch', href: 'https://www.google.com' }
             ]
         }
     },
@@ -37,7 +43,18 @@ export default defineNuxtConfig({
         prerender: {
             crawlLinks: true,
             routes: ['/', '/servizi', '/chi-sono', '/contatti']
-        }
+        },
+        // Pre-comprime gli asset statici: meno byte, pagina più veloce
+        compressPublicAssets: { gzip: true, brotli: true }
+    },
+
+    routeRules: {
+        // Nota: niente redirect sullo slash finale. Nitro serve le pagine
+        // prerenderizzate come directory e una regola del genere va in loop.
+        // L'URL unico è già garantito dal <link rel="canonical"> di ogni pagina.
+        // Gli asset con hash nel nome non cambiano mai: cache lunga
+        '/_nuxt/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
+        '/sitemap.xml': { headers: { 'content-type': 'application/xml; charset=utf-8' } }
     },
 
     ui: {

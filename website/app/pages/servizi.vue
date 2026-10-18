@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { servizi } from '~/utils/servizi'
+import { whatsappUrl } from '~/utils/site'
 import { usePageSeo, useBreadcrumbSchema } from '~/composables/useSeo'
 
 usePageSeo({
@@ -53,13 +54,14 @@ useBreadcrumbSchema([
             Scrivimi o chiamami: parliamo del tuo problema e capiamo insieme qual è il primo passo giusto.
           </p>
           <UButton
-            to="/contatti"
-            color="tertiary"
+            :to="whatsappUrl"
+            target="_blank"
+            rel="noopener noreferrer"
             size="lg"
-            class="rounded-full font-semibold"
-            trailing-icon="i-heroicons-arrow-right"
+            class="rounded-full bg-[#25D366] font-semibold text-white hover:bg-[#1EBE5A]"
           >
-            Come posso aiutarti?
+            <AtomsWhatsAppIcon class="h-5 w-5" />
+            Scrivimi su WhatsApp
           </UButton>
         </div>
       </UCard>

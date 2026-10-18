@@ -15,8 +15,9 @@ const { target, visible } = useScrollReveal()
       :src="heroImage"
       alt="Gianluca Antonelli, fisioterapista OMPT a Pisa, durante una seduta di terapia manuale"
       width="1920"
-      height="1080"
+      height="1280"
       fetchpriority="high"
+      decoding="async"
       class="absolute inset-0 h-full w-full object-cover"
     >
     <div class="absolute inset-0 bg-gradient-to-r from-primary-950/90 via-primary-950/70 to-primary-950/30" />

@@ -7,14 +7,13 @@ const links = [
   { label: 'Home', to: '/#home' },
   { label: 'Servizi', to: '/#servizi' },
   { label: 'Chi sono', to: '/#chi-sono' },
-  { label: 'Contatti', to: '/#contatti' }
+  { label: 'Contatti', to: '/contatti' }
 ]
 
 // Pagine di approfondimento
 const approfondimenti = [
   { label: 'Tutti i servizi', to: '/servizi' },
-  { label: 'Il mio percorso', to: '/chi-sono' },
-  { label: 'Contatti e mappa', to: '/contatti' }
+  { label: 'Il mio percorso', to: '/chi-sono' }
 ]
 </script>
 

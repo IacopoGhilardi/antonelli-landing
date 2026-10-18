@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { professionista, studio, indirizzoCompleto, zoneServite } from '~/utils/site'
+import { professionista, studio, indirizzoCompleto, zoneServite, whatsappUrl } from '~/utils/site'
 import { usePageSeo, useBreadcrumbSchema } from '~/composables/useSeo'
 
 usePageSeo({
@@ -48,6 +48,16 @@ useBreadcrumbSchema([
             </div>
 
             <div class="space-y-2">
+              <UButton
+                :to="whatsappUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+                block
+                class="rounded-full bg-[#25D366] font-semibold text-white hover:bg-[#1EBE5A]"
+              >
+                <AtomsWhatsAppIcon class="h-5 w-5" />
+                Scrivimi su WhatsApp
+              </UButton>
               <UButton
                 :to="professionista.telefonoHref"
                 color="tertiary"

@@ -35,10 +35,18 @@ const coloreAvatar = computed(() => {
   return palette[somma % palette.length]
 })
 
+/**
+ * Accetta sia una data ISO (la calcola in forma relativa) sia un'etichetta
+ * già pronta copiata da Google, tipo "11 mesi fa".
+ */
 const dataRelativa = computed(() => {
   if (!props.data) return ''
-  const giorni = Math.floor((Date.now() - new Date(props.data).getTime()) / 86_400_000)
-  if (Number.isNaN(giorni) || giorni < 0) return ''
+
+  const timestamp = Date.parse(props.data)
+  if (Number.isNaN(timestamp)) return props.data
+
+  const giorni = Math.floor((Date.now() - timestamp) / 86_400_000)
+  if (giorni < 0) return ''
   if (giorni < 7) return 'questa settimana'
   if (giorni < 30) return `${Math.floor(giorni / 7)} settimane fa`
   const mesi = Math.floor(giorni / 30)

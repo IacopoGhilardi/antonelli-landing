@@ -8,7 +8,7 @@
       </NuxtLayout>
       <Footer />
     </UMain>
-    <MoleculesBackToTopButton />
+    <MoleculesWhatsAppButton />
   </UApp>
 </template>
 
